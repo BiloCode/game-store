@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env",
+      "jest"
+    ],
+    "paths": {
+      "@/*": ["src/*"],
+      "@atoms/*" : ["src/components/atoms/*"],
+      "@molecules/*" : ["src/components/molecules/*"],
+      "@organisms/*" : ["src/components/organisms/*"],
+      "@pages/*" : ["src/components/pages/*"],
+      "@interfaces/*" : ["src/core/interfaces/*"],
+      "@localtypes/*" : ["src/core/localtypes/*"],
+      "@converter/*" : ["src/core/converter/*"],
+      "@services/*" : ["src/core/services/*"],
+      "@composables/*" : ["src/composables/*"],
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
