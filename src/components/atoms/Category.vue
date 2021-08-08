@@ -25,6 +25,6 @@ span {
   line-height: calc(14px * 1.4);
   background-color: var(--green);
   border-radius: 8px;
-  padding: 4px 1em;
+  padding: 2px 1em;
 }
 </style>

@@ -1,9 +1,9 @@
 import { ref } from "vue";
 
-const useTab = () => {
-  const tabList = ["Reseñas", "Imagenes"];
+const useTab = (tab: number) => {
+  const tabList = ["Imagenes", "Reseñas"];
 
-  const tabSelect = ref<number>(0);
+  const tabSelect = ref<number>(tab);
   const tabChange = (value: number) => (tabSelect.value = value);
 
   return {

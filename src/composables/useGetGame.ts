@@ -8,8 +8,8 @@ const useGetGame = () => {
   const game = ref<IGame>();
   const state = ref<RequestState>(RequestState.LOADING);
 
-  const isLoading = computed(() => state.value === RequestState.LOADING);
   const isSucess = computed(() => state.value === RequestState.SUCCESS);
+  const isLoading = computed(() => state.value === RequestState.LOADING);
 
   onMounted(async () => {
     try {

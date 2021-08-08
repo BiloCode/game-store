@@ -57,14 +57,13 @@ aside {
   width: 100%;
   display: grid;
   row-gap: 80px;
-  user-select: none;
 
   .game {
     &-img {
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 400px;
+      height: 360px;
       border-radius: 10px;
     }
 

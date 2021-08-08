@@ -31,13 +31,17 @@ button {
   cursor: pointer;
   font-weight: bold;
 
+  &:not(&.green):active {
+    --bg: var(--dark-blue-light-b);
+  }
+
   &.green {
     --bg: var(--green);
     --text: #fff;
-  }
 
-  &:active {
-    opacity: 0.9;
+    &:active {
+      --bg: var(--green-light);
+    }
   }
 }
 </style>

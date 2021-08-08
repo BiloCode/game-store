@@ -17,7 +17,7 @@
           @click="tabChange(key)"
         />
       </div>
-      <CommentList v-if="tabSelect === 0" :comments="comments" />
+      <CommentList v-if="tabSelect === 1" :comments="comments" />
     </section>
   </div>
 </template>
@@ -49,7 +49,7 @@ export default defineComponent({
     }
   },
   setup() {
-    const { tabSelect, tabList, tabChange } = useTab();
+    const { tabSelect, tabList, tabChange } = useTab(1);
 
     return {
       tabList,
