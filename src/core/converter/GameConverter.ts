@@ -10,7 +10,7 @@ class Game implements IGame {
     readonly price: number,
     readonly stars: number,
     readonly bannerImage: string,
-    readonly captures: string[],
+    readonly gameCaptures: string[],
     readonly categories: string[],
     readonly comments: IGameComment[]
   ) {}
@@ -31,7 +31,7 @@ const GameConverter = {
       data.price,
       data.stars,
       data.bannerImage,
-      data.captures,
+      data.gameCaptures,
       data.categories,
       data.comments
     );

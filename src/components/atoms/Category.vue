@@ -18,12 +18,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/variables";
+
 span {
-  color: #fff;
-  font-weight: bold;
+  color: $blue-light;
+  font-weight: 400;
   font-size: 14px;
-  line-height: calc(14px * 1.4);
-  background-color: var(--green);
+  line-height: 14px * $line-multiplier;
+  background-color: $dark-blue-light;
   border-radius: 8px;
   padding: 2px 1em;
 }

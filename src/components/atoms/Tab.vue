@@ -20,26 +20,29 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/variables";
+
 button {
   width: 100%;
   height: 48px;
   margin: 0;
   border: none;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 16px;
-  color: var(--blue);
+  color: $blue;
   background: transparent;
   box-sizing: border-box;
+  user-select: none;
   border-bottom: 3px solid transparent;
 
   &.active {
-    color: var(--blue-light);
-    border-bottom-color: var(--blue-light);
+    color: $blue-light;
+    border-bottom-color: $blue-light;
   }
 
-  &:hover {
-    opacity: 0.9;
+  &:not(&.active):hover {
+    background-color: $dark-blue-light;
   }
 }
 </style>

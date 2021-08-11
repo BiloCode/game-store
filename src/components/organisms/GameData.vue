@@ -4,16 +4,19 @@
       <figure class="game-img">
         <Image cover :source="image" alt="store-game" />
       </figure>
-      <div class="game-information">
-        <Text size="">{{ title }}</Text>
-        <section>
-          <Category v-for="(value, index) in genders" :key="index">
-            {{ value }}
-          </Category>
-        </section>
+      <div class="game-title">
+        <Text>{{ title }}</Text>
+        <Text color="blue-light" weight="regular" size="e-small"
+          >Creado el 23 de octubre del 1996</Text
+        >
       </div>
+      <section class="game-categories">
+        <Category v-for="(value, index) in genders" :key="index">
+          {{ value }}
+        </Category>
+      </section>
       <div class="game-price">
-        <Text size="big">{{ formatPrice() }}</Text>
+        <Text color="white" size="big">{{ formatPrice() }}</Text>
       </div>
     </div>
     <div class="game-btn-container">
@@ -56,7 +59,9 @@ export default defineComponent({
 aside {
   width: 100%;
   display: grid;
-  row-gap: 80px;
+  row-gap: 4em;
+  position: sticky;
+  top: 0;
 
   .game {
     &-img {
@@ -77,19 +82,19 @@ aside {
       row-gap: 10px;
     }
 
-    &-information {
-      display: grid;
-      row-gap: 16px;
+    &-categories {
+      display: flex;
+      flex-wrap: wrap;
 
-      section {
-        display: flex;
-        flex-wrap: wrap;
-
-        & > * {
-          margin-right: 8px;
-          margin-bottom: 8px;
-        }
+      & > * {
+        margin-right: 8px;
+        margin-bottom: 8px;
       }
+    }
+
+    &-title {
+      display: grid;
+      row-gap: 4px;
     }
 
     &-price {

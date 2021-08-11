@@ -2,7 +2,7 @@
   <div class="game-information">
     <header>
       <div>
-        <Text>{{ title }}</Text>
+        <Text>Descripción</Text>
         <Paragraph>{{ description }}</Paragraph>
       </div>
       <StarList :amount="stars" />
@@ -17,7 +17,11 @@
           @click="tabChange(key)"
         />
       </div>
-      <CommentList v-if="tabSelect === 1" :comments="comments" />
+      <GameCaptures v-if="tabSelect === 0" :captures="captures" />
+      <template v-if="tabSelect === 1">
+        <ReviewList :comments="comments" />
+        <EmptyReviews v-if="comments.length === 0" />
+      </template>
     </section>
   </div>
 </template>
@@ -32,16 +36,29 @@ import Tab from "@atoms/Tab.vue";
 import Text from "@atoms/Text.vue";
 import Paragraph from "@atoms/Paragraph.vue";
 import StarList from "@molecules/StarList.vue";
-import CommentList from "@molecules/CommentList.vue";
+import ReviewList from "@molecules/ReviewList.vue";
+import GameCaptures from "@molecules/GameCaptures.vue";
+import EmptyReviews from "../molecules/EmptyReviews.vue";
 
 export default defineComponent({
-  components: { Text, StarList, Paragraph, Tab, CommentList },
+  components: {
+    Text,
+    StarList,
+    Paragraph,
+    Tab,
+    ReviewList,
+    GameCaptures,
+    EmptyReviews
+  },
   props: {
-    title: String,
     description: String,
     stars: {
       type: Number,
       required: true
+    },
+    captures: {
+      type: Array as PropType<string[]>,
+      default: () => []
     },
     comments: {
       type: Array as PropType<IGameComment[]>,
@@ -49,7 +66,7 @@ export default defineComponent({
     }
   },
   setup() {
-    const { tabSelect, tabList, tabChange } = useTab(1);
+    const { tabSelect, tabList, tabChange } = useTab(0);
 
     return {
       tabList,

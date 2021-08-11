@@ -6,7 +6,7 @@ interface IGame {
   price: number;
   stars: number;
   bannerImage: string;
-  captures: string[];
+  gameCaptures: string[];
   categories: string[];
   comments: GameComment[];
 }

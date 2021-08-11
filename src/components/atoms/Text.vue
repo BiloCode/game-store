@@ -7,9 +7,9 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 
-type TextColor = "white" | "default" | "blue";
-type TextSize = "big" | "default" | "small" | "e-small";
-type TextWeight = "bold" | "default";
+type TextWeight = "bold" | "default" | "regular";
+type TextSize = "big" | "default" | "small" | "e-small" | "normal";
+type TextColor = "white" | "default" | "blue" | "blue-light";
 
 export default defineComponent({
   props: {
@@ -20,11 +20,14 @@ export default defineComponent({
   setup(props) {
     const setClass = () => ({
       big: props.size === "big",
+      normal: props.size === "normal",
       small: props.size === "small",
       e_small: props.size === "e-small",
       bold: props.weight === "bold",
+      regular: props.weight === "regular",
       white: props.color === "white",
-      blue: props.color === "blue"
+      blue: props.color === "blue",
+      blue_light: props.color === "blue-light"
     });
 
     return {
@@ -35,37 +38,31 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/text_variables";
+
 span {
-  --size: 22px;
-  --line: calc(var(--size) * 1.4);
+  color: $default-color;
+  font-size: $default-size;
+  font-weight: $default-weight;
+  line-height: $default-size * $line-multiplier;
 
-  color: var(--blue-light-max);
-  font-size: var(--size);
-  line-height: var(--line);
-  font-weight: bolder;
-
-  &.white {
-    color: #fff;
+  @each $key, $value in $colors {
+    &.#{$key} {
+      color: $value;
+    }
   }
 
-  &.blue {
-    color: var(--blue);
+  @each $key, $value in $sizes {
+    &.#{$key} {
+      font-size: $value;
+      line-height: $value * $line-multiplier;
+    }
   }
 
-  &.e_small {
-    --size: 14px;
-  }
-
-  &.small {
-    --size: 16px;
-  }
-
-  &.big {
-    --size: 28px;
-  }
-
-  &.bold {
-    font-weight: bold;
+  @each $key, $value in $weights {
+    &.#{$key} {
+      font-weight: $value;
+    }
   }
 }
 </style>

@@ -1,16 +1,21 @@
 <template>
-  <Detail />
+  <main>
+    <Navbar />
+    <Detail />
+  </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
-import Detail from '@pages/Detail.vue';
+import Detail from "@pages/Detail.vue";
+import Navbar from "./components/organisms/Navbar.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
-    Detail
+    Detail,
+    Navbar
   }
 });
 </script>

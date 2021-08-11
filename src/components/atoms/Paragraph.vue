@@ -5,14 +5,15 @@
 </template>
 
 <style lang="scss" scoped>
-p {
-  --size: 16px;
-  --line: calc(var(--size) * 1.4);
+@import "../../styles/variables";
 
+$default-size: 16px;
+
+p {
   margin: 0;
   font-weight: 300;
-  font-size: var(--size);
-  line-height: var(--line);
-  color: var(--blue-light);
+  font-size: $default-size;
+  line-height: $default-size * $line-multiplier;
+  color: $blue-light;
 }
 </style>

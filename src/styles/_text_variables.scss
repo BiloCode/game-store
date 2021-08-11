@@ -1,0 +1,23 @@
+@import "./variables.scss";
+
+$default-size: 22px;
+$default-weight: bolder;
+$default-color: $blue-light-max;
+
+$weights: (
+  "bold": bold,
+  "regular": 400
+);
+
+$colors: (
+  "blue": var(--blue),
+  "blue_light": var(--blue-light),
+  "white": #fff
+);
+
+$sizes: (
+  "e_small": 14px,
+  "small": 16px,
+  "normal": 18px,
+  "big": 28px
+);

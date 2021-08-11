@@ -1,36 +1,42 @@
 <template>
-  <main class="main-container">
-    <div v-if="isLoading">
-      <span style="color:#fff">Loading ...</span>
+  <div class="main-container">
+    <div class="spinner-container" v-if="isLoading">
+      <Spinner />
     </div>
-    <div v-if="game && isSucess" class="page-container">
-      <GameData
-        :title="game.title"
-        :price="game.price"
-        :genders="game.categories"
-        :image="game.bannerImage"
-      />
-      <GameInformation
-        :title="game.title"
-        :stars="game.stars"
-        :description="game.description"
-        :comments="game.comments"
-      />
-    </div>
-  </main>
+    <PageLimiter>
+      <div v-if="game && isSucess" class="page-container">
+        <GameData
+          :title="game.title"
+          :price="game.price"
+          :genders="game.categories"
+          :image="game.bannerImage"
+        />
+        <GameInformation
+          :stars="game.stars"
+          :description="game.description"
+          :comments="game.comments"
+          :captures="game.gameCaptures"
+        />
+      </div>
+    </PageLimiter>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
+import Spinner from "@atoms/Spinner.vue";
 import GameData from "@organisms/GameData.vue";
 import useGetGame from "@composables/useGetGame";
+import PageLimiter from "@atoms/PageLimiter.vue";
 import GameInformation from "@organisms/GameInformation.vue";
 
 export default defineComponent({
   components: {
     GameData,
-    GameInformation
+    GameInformation,
+    PageLimiter,
+    Spinner
   },
   setup() {
     const { game, isSucess, isLoading } = useGetGame();
@@ -45,19 +51,27 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/variables";
+
 .main-container {
   min-height: 100vh;
-  background-color: var(--dark-blue);
+  background-color: $dark-blue;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3em 0;
+  box-sizing: border-box;
 }
 
 .page-container {
-  width: 80%;
-  margin: 0 auto;
   padding: 4em 0;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 348px 1fr;
+  grid-template-columns: 296px 1fr;
   align-items: start;
-  column-gap: 5em;
+  column-gap: 6em;
 }
 </style>

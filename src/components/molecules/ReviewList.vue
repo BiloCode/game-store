@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Comment v-for="(data, key) in comments" :key="key" :information="data" />
+    <Review v-for="(data, key) in comments" :key="key" :information="data" />
   </div>
 </template>
 
@@ -8,10 +8,10 @@
 import { defineComponent, PropType } from "vue";
 
 import GameComment from "@interfaces/IGameComment";
-import Comment from "@molecules/Comment.vue";
+import Review from "@molecules/Review.vue";
 
 export default defineComponent({
-  components: { Comment },
+  components: { Review },
   props: {
     comments: {
       type: Array as PropType<GameComment[]>,

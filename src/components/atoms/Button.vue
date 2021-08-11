@@ -17,30 +17,30 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-button {
-  --bg: var(--dark-blue-light);
-  --text: var(--blue);
+@import "../../styles/variables";
 
+button {
   width: 100%;
   height: 48px;
-  background-color: var(--bg);
-  color: var(--text);
+  color: $blue;
+  background-color: $dark-blue-light;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  user-select: none;
   font-weight: bold;
 
   &:not(&.green):active {
-    --bg: var(--dark-blue-light-b);
+    background-color: $dark-blue-light-b;
   }
 
   &.green {
-    --bg: var(--green);
-    --text: #fff;
+    background-color: $green;
+    color: #fff;
 
     &:active {
-      --bg: var(--green-light);
+      background-color: lighten($green, 5);
     }
   }
 }
