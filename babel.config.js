@@ -18,6 +18,7 @@ module.exports = {
         "@converter" : path.resolve(__dirname, "./src/core/converter"),
         "@services" : path.resolve(__dirname, "./src/core/services"),
         "@composables" : path.resolve(__dirname, "./src/composables"),
+        "@utils": path.resolve(__dirname, "./src/core/utils")
       }
     }]
   ]

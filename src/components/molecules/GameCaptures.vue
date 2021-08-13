@@ -35,6 +35,10 @@ div {
     cursor: pointer;
     position: relative;
     border-radius: 10px;
+
+    &:hover img {
+      filter: brightness(80%);
+    }
   }
 }
 </style>

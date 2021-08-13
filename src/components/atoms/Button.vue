@@ -1,9 +1,7 @@
-<template>
-  <button :class="{ green }">{{ text }}</button>
-</template>
-
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+
+type TColor = "green" | "red";
 
 export default defineComponent({
   props: {
@@ -11,10 +9,27 @@ export default defineComponent({
       type: String,
       required: true
     },
-    green: Boolean
+    color: {
+      type: String as PropType<TColor>
+    },
+    small: Boolean
+  },
+  setup(props) {
+    const setClass = () => ({
+      green: props.color === "green",
+      red: props.color === "red"
+    });
+
+    return {
+      setClass
+    };
   }
 });
 </script>
+
+<template>
+  <button :class="{ ...setClass(), small }">{{ text }}</button>
+</template>
 
 <style lang="scss" scoped>
 @import "../../styles/variables";
@@ -30,10 +45,7 @@ button {
   cursor: pointer;
   user-select: none;
   font-weight: bold;
-
-  &:not(&.green):active {
-    background-color: $dark-blue-light-b;
-  }
+  background-color: $dark-blue-light-b;
 
   &.green {
     background-color: $green;
@@ -42,6 +54,20 @@ button {
     &:active {
       background-color: lighten($green, 5);
     }
+  }
+
+  &.red {
+    background-color: $red;
+    color: #fff;
+
+    &:active {
+      background-color: lighten($red, 5);
+    }
+  }
+
+  &.small {
+    height: 40px;
+    font-size: 14px;
   }
 }
 </style>

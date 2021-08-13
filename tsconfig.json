@@ -26,6 +26,7 @@
       "@converter/*" : ["src/core/converter/*"],
       "@services/*" : ["src/core/services/*"],
       "@composables/*" : ["src/composables/*"],
+      "@utils/*" : ["src/core/utils/*"],
     },
     "lib": [
       "esnext",

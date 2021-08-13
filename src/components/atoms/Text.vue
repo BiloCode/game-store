@@ -1,9 +1,3 @@
-<template>
-  <span :class="setClass()">
-    <slot>Default Name</slot>
-  </span>
-</template>
-
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 
@@ -15,7 +9,8 @@ export default defineComponent({
   props: {
     size: String as PropType<TextSize>,
     weight: String as PropType<TextWeight>,
-    color: String as PropType<TextColor>
+    color: String as PropType<TextColor>,
+    tached: Boolean
   },
   setup(props) {
     const setClass = () => ({
@@ -27,7 +22,8 @@ export default defineComponent({
       regular: props.weight === "regular",
       white: props.color === "white",
       blue: props.color === "blue",
-      blue_light: props.color === "blue-light"
+      blue_light: props.color === "blue-light",
+      tached: props.tached
     });
 
     return {
@@ -36,6 +32,12 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <span :class="setClass()">
+    <slot>Default Name</slot>
+  </span>
+</template>
 
 <style lang="scss" scoped>
 @import "../../styles/text_variables";
@@ -63,6 +65,10 @@ span {
     &.#{$key} {
       font-weight: $value;
     }
+  }
+
+  &.tached {
+    text-decoration: line-through;
   }
 }
 </style>

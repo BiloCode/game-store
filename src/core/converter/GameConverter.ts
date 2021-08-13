@@ -5,6 +5,7 @@ import IGameComment from "@interfaces/IGameComment";
 
 class Game implements IGame {
   constructor(
+    readonly id: string,
     readonly title: string,
     readonly description: string,
     readonly price: number,
@@ -12,7 +13,8 @@ class Game implements IGame {
     readonly bannerImage: string,
     readonly gameCaptures: string[],
     readonly categories: string[],
-    readonly comments: IGameComment[]
+    readonly comments: IGameComment[],
+    readonly discount: number
   ) {}
 }
 
@@ -26,6 +28,7 @@ const GameConverter = {
   ): Game {
     const data = snapshot.data(options)!;
     return new Game(
+      snapshot.id,
       data.title,
       data.description,
       data.price,
@@ -33,7 +36,8 @@ const GameConverter = {
       data.bannerImage,
       data.gameCaptures,
       data.categories,
-      data.comments
+      data.comments,
+      data.discount
     );
   }
 };

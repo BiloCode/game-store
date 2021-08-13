@@ -4,21 +4,6 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "@vue/runtime-core";
-
-type Size = "contain";
-
-export default defineComponent({
-  props: {
-    size: {
-      type: Number || (String as PropType<Size>),
-      default: "contain"
-    }
-  }
-});
-</script>
-
 <style lang="scss" scoped>
 button {
   width: 40px;

@@ -1,3 +1,43 @@
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+import Text from "@atoms/Text.vue";
+import Image from "@atoms/Image.vue";
+import Button from "@atoms/Button.vue";
+import Category from "@atoms/Category.vue";
+import GamePrice from "../molecules/GamePrice.vue";
+
+export default defineComponent({
+  components: { Button, Image, Category, Text, GamePrice },
+  emits: ["click-buy", "click-favorite"],
+  props: {
+    title: String,
+    price: {
+      type: Number,
+      required: true
+    },
+    discount: {
+      type: Number,
+      required: true
+    },
+    image: String,
+    genders: {
+      type: Array as PropType<string[]>,
+      default: () => []
+    }
+  },
+  setup(props, context) {
+    const buyEmit = () => context.emit("click-buy");
+    const favoriteEmit = () => context.emit("click-favorite");
+
+    return {
+      buyEmit,
+      favoriteEmit
+    };
+  }
+});
+</script>
+
 <template>
   <aside>
     <div class="game-data">
@@ -15,45 +55,14 @@
           {{ value }}
         </Category>
       </section>
-      <div class="game-price">
-        <Text color="white" size="big">{{ formatPrice() }}</Text>
-      </div>
+      <GamePrice :price="price" :discount="discount" />
     </div>
     <div class="game-btn-container">
-      <Button text="Comprar Ahora" green />
-      <Button text="Agregar al Carrito" />
+      <Button color="green" text="Comprar Ahora" @click="buyEmit" />
+      <Button text="Agregar a favoritos" @click="favoriteEmit" />
     </div>
   </aside>
 </template>
-
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
-
-import Text from "@atoms/Text.vue";
-import Image from "@atoms/Image.vue";
-import Button from "@atoms/Button.vue";
-import Category from "@atoms/Category.vue";
-
-export default defineComponent({
-  components: { Button, Image, Category, Text },
-  props: {
-    title: String,
-    price: Number,
-    image: String,
-    genders: {
-      type: Array as PropType<string[]>,
-      default: () => []
-    }
-  },
-  setup(props) {
-    const formatPrice = () => `S/ ${props.price!.toFixed(2)}`;
-
-    return {
-      formatPrice
-    };
-  }
-});
-</script>
 
 <style lang="scss" scoped>
 aside {
@@ -95,12 +104,6 @@ aside {
     &-title {
       display: grid;
       row-gap: 4px;
-    }
-
-    &-price {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
     }
   }
 }
