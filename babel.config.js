@@ -18,7 +18,8 @@ module.exports = {
         "@converter" : path.resolve(__dirname, "./src/core/converter"),
         "@services" : path.resolve(__dirname, "./src/core/services"),
         "@composables" : path.resolve(__dirname, "./src/composables"),
-        "@utils": path.resolve(__dirname, "./src/core/utils")
+        "@utils": path.resolve(__dirname, "./src/core/utils"),
+        "@store": path.resolve(__dirname, "./src/store")
       }
     }]
   ]

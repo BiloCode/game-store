@@ -9,7 +9,7 @@
 import { defineComponent } from "vue";
 
 import Detail from "@pages/Detail.vue";
-import Navbar from "./components/organisms/Navbar.vue";
+import Navbar from "@organisms/Navbar.vue";
 
 export default defineComponent({
   name: "App",

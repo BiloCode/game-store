@@ -27,6 +27,7 @@
       "@services/*" : ["src/core/services/*"],
       "@composables/*" : ["src/composables/*"],
       "@utils/*" : ["src/core/utils/*"],
+      "@store/*" : ["src/store/*"],
     },
     "lib": [
       "esnext",
